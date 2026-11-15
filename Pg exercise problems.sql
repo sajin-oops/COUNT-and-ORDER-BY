@@ -1047,7 +1047,11 @@ Order by join date, and include guest members.
 
 
 -- SELECT * FROM cd.members;
- 
 SELECT COUNT(*) OVER(),firstname,surname 
 FROM cd.members
 ORDER BY joindate;
+
+-- another way
+SELECT (SELECT COUNT(*) FROM cd.members) AS count,firstname,surname
+FROM cd.members ORDER BY joindate;
+
